@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -79,5 +80,10 @@ public class GameManager : MonoBehaviour
         int min = (int)gameTime / 60;
         int sec = (int)gameTime % 60;
         gameTimeText.text = min.ToString("00") + ":" + sec.ToString("00"); // + "/" + maxTime.ToString();
+    }
+
+    public void ReloadLevel()
+    {
+        SceneManager.LoadScene(0);
     }
 }

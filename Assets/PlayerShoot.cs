@@ -69,11 +69,16 @@ public class PlayerShoot : MonoBehaviour
 
             if (Physics.Raycast(transform.position, transform.forward, out hit)) //forward es la dirección en la que mira el eje z del objeto
             {
-                Debug.DrawLine(transform.position, transform.forward * hit.distance, hitColor); // Sirven para encontrar errores en el código, y para ver si el rayo está funcionando correctamente. Se dibuja una línea desde la posición del objeto hasta la distancia del hit.
-                // Debug.Break(); // Pausa el juego en el editor de Unity
+                if(hit.transform.CompareTag("Enemy")) // If the object that the ray collides with has the tag "Enemy", it will take damage.
+                {
+                    hit.transform.GetComponent<EnemyScript>().TakeDamage(5f); // The object that the ray collides with will take 5 damage.
+                }
 
+                Debug.DrawLine(transform.position, transform.forward * hit.distance, hitColor); // Used to find errors in the code, and to see if the ray is working correctly. A line is drawn from the object's position to the hit distance.
+                // Debug.Break(); // Pauses the game in the Unity editor
             }
         }
+
     }
 
     void UpdateBulletText()
