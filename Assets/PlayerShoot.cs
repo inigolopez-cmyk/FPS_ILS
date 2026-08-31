@@ -16,6 +16,8 @@ public class PlayerShoot : MonoBehaviour
     private TMP_Text bulletText;
     [SerializeField]
     private ParticleSystem shootParticles;
+    [SerializeField]
+    private AudioSource shootAudio;
 
     private void OnEnable()
     {
@@ -58,6 +60,7 @@ public class PlayerShoot : MonoBehaviour
         {
             RaycastHit hit;
             bullets--;
+            shootAudio.Play();
             UpdateBulletText();
 
             //if (!shootParticles.isPlaying) // Disparo no automático, sino que se dispara una vez por click. Si el particle system está reproduciéndose, no se reproduce de nuevo hasta que termine.
