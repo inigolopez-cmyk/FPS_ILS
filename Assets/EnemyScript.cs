@@ -20,6 +20,9 @@ public class EnemyScript : MonoBehaviour
 
     int currentPoint = 0;
 
+    private GameObject drop;
+    [Range(0f, 1f)] [SerializeField] private float dropChance = 0.75f;
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -91,7 +94,14 @@ public class EnemyScript : MonoBehaviour
 
         if (health <= 0)
         {
+            if (Random.value <= dropChance)
+            {
+                Instantiate(drop, transform.position, Quaternion.identity);
+            }
+
             Destroy(this.gameObject);
+
+            
         }
     }
 }
