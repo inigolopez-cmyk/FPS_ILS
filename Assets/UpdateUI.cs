@@ -4,9 +4,9 @@ using UnityEngine.SceneManagement;
 
 public class UpdateUI : MonoBehaviour
 {
-    //public TMP_Text scoreText;
-    public TMP_Text healthText;
-    //public int score;
+    public TMP_Text scoreText;
+    //public TMP_Text healthText;
+    public int score;
 
     public GameObject gameOverPanel;
     //public GameObject victoryPanel;
@@ -22,9 +22,10 @@ public class UpdateUI : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    public void AddHealth(float value)
+    public void AddScore(int value)
     {
-        healthText.text = "Health: " + value;
+        score += value;
+        scoreText.text = "Points: " + score.ToString();
     }
 
 

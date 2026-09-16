@@ -20,9 +20,12 @@ public class EnemyScript : MonoBehaviour
 
     int currentPoint = 0;
 
+    UpdateUI uiScript;
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        uiScript = GameObject.Find("HUD").GetComponent<UpdateUI>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -91,6 +94,7 @@ public class EnemyScript : MonoBehaviour
 
         if (health <= 0)
         {
+            uiScript.AddScore(10);
             Destroy(this.gameObject);
         }
     }
