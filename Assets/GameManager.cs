@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private TMP_Text gameTimeText;
 
+    [SerializeField]
+    private UpdateUI uiScript;
+
     private void Awake()
     {
         if (Instance == null)
@@ -35,7 +38,7 @@ public class GameManager : MonoBehaviour
     {
         isPlaying = true;
 
-        gameTime = 90;
+        gameTime = 120;
         // maxTime = 90;
         UpdateGameTimeText();
 
@@ -82,8 +85,24 @@ public class GameManager : MonoBehaviour
         gameTimeText.text = min.ToString("00") + ":" + sec.ToString("00"); // + "/" + maxTime.ToString();
     }
 
+    public void PlayerDied()
+    {
+        AudioListener.pause = true;
+        isPlaying = false;
+        Time.timeScale = 0;
+    }
+
+    public void TimeIsUp()
+    {
+        gameTime = 0;
+        isPlaying = false;
+        Time.timeScale = 0;
+        AudioListener.pause = true;
+        uiScript.OpenGameOver();
+    }
+
     public void ReloadLevel()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 }
