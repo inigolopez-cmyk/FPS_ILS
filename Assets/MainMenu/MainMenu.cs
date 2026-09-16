@@ -13,6 +13,8 @@ public class MainMenu : MonoBehaviour
 
     public void NewGame()
     {
+        Time.timeScale = 1f;
+        AudioListener.pause = false;
         SceneManager.LoadScene(1);
     }
 

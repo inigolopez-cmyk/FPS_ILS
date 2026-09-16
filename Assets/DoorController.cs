@@ -3,6 +3,20 @@ using DG.Tweening;
 
 public class DoorController : MonoBehaviour
 {
+
+    [SerializeField] 
+    private float openOffset = 1.95f;
+
+    [SerializeField] 
+    private float duration = 2f;
+
+    private float closedY;
+
+    private void Awake()
+    {
+        closedY = transform.position.y; // Each door remembers its own starting height
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() // Subscribe to events when the object is enabled
     {
@@ -22,15 +36,22 @@ public class DoorController : MonoBehaviour
         GameEvents.Instance.onDoorTriggerExit -= CloseDoor; // Unsubscribe from the event when the object is destroyed
     }
 
-    void OpenDoor() // Method to open the door
+    void OpenDoor(DoorController target) // Method to open the door
     {
         //transform.Translate(new Vector3 (-4.29f, 2.56f, -10.3f)); // Move the door to the open position
-        transform.DOMoveY(0,2); // Move the door to the open position using DOTween
+        //transform.DOMoveY(3.6f,2); // Move the door to the open position using DOTween
+
+        if (target != this) return;
+        transform.DOMoveY(closedY + openOffset, duration);
     }
 
-    void CloseDoor() // Method to close the door
+    void CloseDoor(DoorController target) // Method to close the door
     {
         //transform.Translate(new Vector3 (4.29f, -2.56f, 10.3f)); // Move the door to the closed position
-        transform.DOMoveY(3.36f, 2); // Move the door to the closed position using DOTween
+        //transform.DOMoveY(1.65f, 2); // Move the door to the closed position using DOTween
+
+        if (target != this) return;
+        transform.DOMoveY(closedY, duration);
     }
+
 }

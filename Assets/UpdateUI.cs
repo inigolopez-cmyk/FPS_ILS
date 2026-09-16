@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 public class UpdateUI : MonoBehaviour
 {
     public TMP_Text scoreText;
-    //public TMP_Text healthText;
     public int score;
 
     public GameObject gameOverPanel;
@@ -46,6 +45,8 @@ public class UpdateUI : MonoBehaviour
 
     public void RestartGame()
     {
+        Time.timeScale = 1f;
+        AudioListener.pause = false;
         SceneManager.LoadScene(1);
     }
 
