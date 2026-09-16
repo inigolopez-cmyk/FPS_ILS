@@ -20,6 +20,13 @@ public class EnemyScript : MonoBehaviour
 
     int currentPoint = 0;
 
+    [SerializeField]
+    private GameObject drop;
+
+    [Range(0f, 1f)]
+    [SerializeField]
+    private float dropChance = 0.75f;
+
     UpdateUI uiScript;
 
     private void Awake()
@@ -94,6 +101,12 @@ public class EnemyScript : MonoBehaviour
 
         if (health <= 0)
         {
+
+            if (Random.value <= dropChance)
+            {
+                Instantiate(drop, transform.position, Quaternion.identity);
+            }
+
             uiScript.AddScore(10);
             Destroy(this.gameObject);
         }
