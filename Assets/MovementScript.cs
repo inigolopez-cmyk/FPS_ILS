@@ -9,9 +9,14 @@ public class MovementScript : MonoBehaviour
     private InputAction jumpInput;
     CharacterController controller; // Nos ahorra: crear escaleras, colisión con el piso,
 
+    [SerializeField]
     private float playerSpeed = 5.0f;
-    private float gravityValue = -9.81f;
+
+    [SerializeField]
     private float jump = 5.0f;
+
+    private float gravityValue = -9.81f;
+
 
     private Vector3 playerVelocity;
     private bool grounded;
