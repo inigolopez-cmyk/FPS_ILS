@@ -39,7 +39,6 @@ public class GameManager : MonoBehaviour
         isPlaying = true;
 
         gameTime = 120;
-        // maxTime = 90;
         UpdateGameTimeText();
 
 
@@ -62,6 +61,7 @@ public class GameManager : MonoBehaviour
             if (isPlaying == false)
             {
                 gameTime = 0;
+                TimeIsUp();
             }
 
             UpdateGameTimeText();
@@ -86,6 +86,13 @@ public class GameManager : MonoBehaviour
     }
 
     public void PlayerDied()
+    {
+        AudioListener.pause = true;
+        isPlaying = false;
+        Time.timeScale = 0;
+    }
+
+    public void PlayerWon()
     {
         AudioListener.pause = true;
         isPlaying = false;

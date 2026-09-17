@@ -22,10 +22,4 @@ public class MainMenu : MonoBehaviour
     {
         Application.Quit();
     }
-
-    public void SetVolume(float value)
-    {
-        AudioListener.volume = value;
-        PlayerPrefs.SetFloat("Volume", value);
-    }
 }

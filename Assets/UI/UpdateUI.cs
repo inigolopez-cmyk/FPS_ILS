@@ -8,13 +8,13 @@ public class UpdateUI : MonoBehaviour
     public int score;
 
     public GameObject gameOverPanel;
-    //public GameObject victoryPanel;
+    public GameObject victoryPanel;
 
     [SerializeField]
     private AudioSource gameOverAudio;
 
-    //[SerializeField]
-    //private AudioSource victoryAudio;
+    [SerializeField]
+    private AudioSource victoryAudio;
 
     void Start()
     {
@@ -36,12 +36,12 @@ public class UpdateUI : MonoBehaviour
         gameOverPanel.SetActive(true);
     }
 
-    //public void OpenVictory()
-    //{
-    //    victoryAudio.ignoreListenerPause = true;
-    //    victoryAudio.Play();
-    //    victoryPanel.SetActive(true);
-    //}
+    public void OpenVictory()
+    {
+        victoryAudio.ignoreListenerPause = true;
+        victoryAudio.Play();
+        victoryPanel.SetActive(true);
+    }
 
     public void RestartGame()
     {

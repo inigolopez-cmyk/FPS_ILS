@@ -41,7 +41,7 @@ public class DoorController : MonoBehaviour
         //transform.Translate(new Vector3 (-4.29f, 2.56f, -10.3f)); // Move the door to the open position
         //transform.DOMoveY(3.6f,2); // Move the door to the open position using DOTween
 
-        if (target != this) return;
+        if (target != this) return; // Prevents all doors opening at the same time
         transform.DOMoveY(closedY + openOffset, duration);
     }
 
@@ -50,7 +50,7 @@ public class DoorController : MonoBehaviour
         //transform.Translate(new Vector3 (4.29f, -2.56f, 10.3f)); // Move the door to the closed position
         //transform.DOMoveY(1.65f, 2); // Move the door to the closed position using DOTween
 
-        if (target != this) return;
+        if (target != this) return; // Prevents all doors opening at the same time
         transform.DOMoveY(closedY, duration);
     }
 
